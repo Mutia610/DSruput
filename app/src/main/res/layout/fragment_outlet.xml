@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    tools:context=".view.OutletFragment">
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:background="@drawable/backgr_login"
+            android:drawableRight="@drawable/ic_location"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            android:hint="your location"
+            android:layout_weight="10"
+            android:layout_marginBottom="15dp"/>
+
+        <Button
+            android:id="@+id/btnLokasi"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/backgr_search_location"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:text="cek lokasi"
+            android:textColor="@color/colorBrown"
+            />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recylerOutlet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear"
+        tools:listitem="@layout/item_outlet"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+</RelativeLayout>

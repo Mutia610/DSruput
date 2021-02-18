@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card"
+        android:layout_margin="3dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgOutlet"
+                android:layout_width="100dp"
+                android:layout_height="110dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/minuman"/>
+
+            <TextView
+                android:id="@+id/namaOutlet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imgOutlet"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:text="D'Sruput, UPI"
+                android:textColor="@color/colorBrown"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/jarakOutlet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:text="3 km"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/alamatOutlet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/namaOutlet"
+                android:layout_toRightOf="@id/imgOutlet"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="15dp"
+                android:text="Jl. Raya Lubuk Begalung No.12, RT./RW/RW.003/003, Kelurahan Lubuk Begalung Nan XX, Kec.Lubuk Begalung, Kota Padang"
+                android:textColor="@color/colorBlack"
+                android:textStyle="normal"
+                android:textSize="14sp"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

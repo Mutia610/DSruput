@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".view.LoginFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="40dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/login"
+            android:layout_gravity="center"
+            />
+
+        <EditText
+            android:id="@+id/emailLogin"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:drawablePadding="10dp"
+            android:hint="Email"
+            android:paddingLeft="10dp"
+            android:background="@drawable/backgr_login"
+            android:drawableLeft="@drawable/ic_email"
+            android:textSize="14sp"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:inputType="textEmailAddress"/>
+
+        <EditText
+            android:id="@+id/passwordLogin"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:drawablePadding="10dp"
+            android:hint="Password"
+            android:paddingLeft="10dp"
+            android:background="@drawable/backgr_login"
+            android:drawableLeft="@drawable/ic_password"
+            android:textSize="14sp"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:inputType="textPassword"/>
+
+        <CheckBox
+            android:id="@+id/chkShowPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Show Password" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/backgr_button_login"
+            android:text="login"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:text="Belum Punya Akun ?"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            android:textStyle="normal"/>
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/backgr_button_register"
+            android:text="Register"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>

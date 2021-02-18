@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card"
+        android:layout_margin="3dp"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgMenu"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:src="@drawable/coklat"/>
+
+            <TextView
+                android:id="@+id/txtRasa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imgMenu"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:text="Coklat"
+                android:textColor="@color/colorBrown"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/txtVarian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="20dp"
+                android:text="Original"
+                android:textColor="@color/colorGray"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/txtRp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtRasa"
+                android:layout_toRightOf="@id/imgMenu"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="15dp"
+                android:text="Rp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/txtHarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtRasa"
+                android:layout_toRightOf="@id/txtRp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"
+                android:text="15000"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/txtStatus1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtVarian"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"
+                android:text="Tersedia"
+                android:textColor="@color/colorGreen"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/txtStatus2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtVarian"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"
+                android:text="Tidak Tersedia"
+                android:textColor="@color/colorRed"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
