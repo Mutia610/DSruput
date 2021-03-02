@@ -3,6 +3,8 @@ package com.mutia.dsruput.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.mutia.dsruput.R
 
 class MainActivity : AppCompatActivity() {
@@ -18,4 +20,5 @@ class MainActivity : AppCompatActivity() {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         // startActivity(intent)
     }
+
 }

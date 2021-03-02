@@ -3,109 +3,145 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="100dp"
-    android:paddingRight="20dp"
-    android:paddingLeft="20dp"
-    android:paddingTop="20dp"
+    android:background="@color/colorBlue"
     tools:context=".view.RegisterFragment">
 
     <TextView
         android:id="@+id/txtBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:drawableLeft="@drawable/ic_back"
-        android:text="back"
-        android:textSize="18sp"
-        android:textColor="@color/colorBlack"
-        android:textStyle="bold"/>
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="13dp"
+        android:drawableStart="@drawable/ic_back"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/backgr_back" />
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:layout_below="@id/txtBack"
-       android:gravity="center"
-       android:padding="30dp"
-       android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtSign"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_marginStart="85dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/txtBack"
+            android:text="Sign Up"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/colorWhite" />
 
-       <TextView
-           android:id="@+id/txtTittle"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:padding="10dp"
-           android:layout_marginBottom="50dp"
-           android:layout_below="@id/txtBack"
-           android:text="Isi Data Registrasi Berikut"
-           android:layout_centerHorizontal="true"
-           android:textSize="21sp"
-           android:textColor="@color/colorOrangeDark"
-           android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/txtBack"
+            android:background="@drawable/backgr_registrasi"
+            android:orientation="vertical"
+            android:paddingLeft="25dp"
+            android:paddingTop="25dp"
+            android:layout_marginTop="30dp"
+            android:paddingRight="25dp">
 
-       <EditText
-           android:id="@+id/etNama"
-           android:layout_width="match_parent"
-           android:layout_height="50dp"
-           android:background="@drawable/backgr_login"
-           android:paddingLeft="10dp"
-           android:paddingRight="10dp"
-           android:hint="Nama"
-           android:inputType="text"
-           android:textSize="18sp"
-           android:textColor="@color/colorBlack"
-           android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/txtTittle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtBack"
+                android:layout_centerHorizontal="true"
+                android:text="Registration"
+                android:textColor="@color/colorBlack2"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
-       <EditText
-           android:id="@+id/etEmail"
-           android:layout_width="match_parent"
-           android:layout_height="50dp"
-           android:layout_marginTop="15dp"
-           android:background="@drawable/backgr_login"
-           android:paddingLeft="10dp"
-           android:paddingRight="10dp"
-           android:hint="Email"
-           android:inputType="text"
-           android:textSize="18sp"
-           android:textColor="@color/colorBlack"
-           android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/txtText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtBack"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="50dp"
+                android:text="Fill your account detail"
+                android:textColor="@color/colorGray"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
-       <EditText
-           android:id="@+id/etPassword"
-           android:layout_width="match_parent"
-           android:layout_height="50dp"
-           android:layout_marginTop="15dp"
-           android:background="@drawable/backgr_login"
-           android:paddingLeft="10dp"
-           android:paddingRight="10dp"
-           android:hint="Password"
-           android:inputType="text"
-           android:textSize="18sp"
-           android:textColor="@color/colorBlack"
-           android:textStyle="bold"/>
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/backgr_login"
+                android:hint="Username"
+                android:drawableStart="@drawable/ic_account"
+                android:drawablePadding="5dp"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray"
+                android:textSize="16sp" />
 
-       <EditText
-           android:id="@+id/etPasswordKonfirmasi"
-           android:layout_width="match_parent"
-           android:layout_height="50dp"
-           android:layout_marginTop="15dp"
-           android:background="@drawable/backgr_login"
-           android:paddingLeft="10dp"
-           android:paddingRight="10dp"
-           android:hint="Konfirmasi Password"
-           android:inputType="text"
-           android:textSize="18sp"
-           android:textColor="@color/colorBlack"
-           android:textStyle="bold"/>
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/backgr_login"
+                android:hint="Email"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="5dp"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray"
+                android:textSize="16sp" />
 
-       <Button
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="50dp"
-           android:background="@drawable/backgr_button_register"
-           android:text="Save"
-           android:textStyle="bold"
-           android:textColor="@color/colorWhite"
-           android:textSize="18sp"/>
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/backgr_login"
+                android:hint="Password"
+                android:drawableStart="@drawable/ic_password"
+                android:drawablePadding="5dp"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray"
+                android:textSize="16sp" />
 
-   </LinearLayout>
+            <EditText
+                android:id="@+id/etPasswordKonfirmasi"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/backgr_login"
+                android:hint="Konfirmasi Password"
+                android:drawableStart="@drawable/ic_baseline_lock_24"
+                android:drawablePadding="5dp"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray"
+                android:textSize="16sp" />
 
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/backgr_button_login"
+                android:text="Sign Up"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
 </RelativeLayout>

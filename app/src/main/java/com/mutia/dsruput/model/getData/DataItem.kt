@@ -17,5 +17,14 @@ data class DataItem(
 	val namaOutlet: String? = null,
 
 	@field:SerializedName("alamat")
-	val alamat: String? = null
+	val alamat: String? = null,
+
+	@field:SerializedName("latitude")
+	val latitude: String? = null,
+
+	@field:SerializedName("longtitude")
+	val longtitude: String? = null,
+
+	var jarak: String? = null
+
 ):Parcelable

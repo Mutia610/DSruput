@@ -1,17 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="@color/colorPlatinum"
     tools:context=".view.MenuActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:padding="20dp"
+        android:background="@drawable/backgr_daftar_menu">
+
+        <TextView
+            android:id="@+id/txtBackMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_back"
+            android:background="@drawable/backgr_back"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="3dp"
+            android:paddingBottom="5dp"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/titleOutlet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daftar Menu"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:textSize="18sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            />
+
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recylerMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         tools:listitem="@layout/item_menu"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        app:spanCount="2"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        />
 
-</RelativeLayout>
+</LinearLayout>

@@ -3,6 +3,7 @@ package com.mutia.dsruput.config
 import com.mutia.dsruput.model.action.ResponseAction
 import com.mutia.dsruput.model.getData.ResponseGetData
 import com.mutia.dsruput.model.getMenu.ResponseGetMenu
+import com.mutia.dsruput.model.login.ResponseLogin
 import io.reactivex.rxjava3.core.Flowable
 import retrofit2.Call
 import retrofit2.http.*
@@ -21,6 +22,18 @@ interface ApiService {
     @GET("getDataMenu.php")
     fun getMenu(@Query("kode_outlet")kode_outlet:String): Call<ResponseGetMenu>
 
+    //Registrasi
+    @FormUrlEncoded
+    @POST("register.php")
+    fun register(@Field("username")username:String,
+                 @Field("email")email:String,
+                 @Field("password")password:String): Call<ResponseAction>
+
+    //Login
+    @FormUrlEncoded
+    @POST("login.php")
+    fun login(@Field("email")email:String,
+              @Field("password")password:String): Call<ResponseLogin>
 
 
 
