@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorWhite3"
+    tools:context=".view.home.PromoFragment">
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:background="@color/colorWhite"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/txtTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Promo"
+            android:textColor="@color/colorBlue"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/txtVoucher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:drawableLeft="@drawable/ic_voucher"
+            android:drawablePadding="8dp"
+            android:text="200 Voucher"
+            android:textColor="@color/colorBlack"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="10dp"
+        android:layout_height="40dp"
+        app:tabSelectedTextColor="@color/colorBlue"
+        app:tabIndicatorColor="@color/colorBlue"
+        app:tabTextColor="@color/colorGray"
+        app:tabTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:tabIndicatorHeight="3dp">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/subscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subscription" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/deals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deals"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/voucherSaya"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voucher Saya" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerPromo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

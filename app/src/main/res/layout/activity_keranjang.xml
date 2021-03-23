@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipeKeranjang"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite3"
+    tools:context=".view.home.KeranjangActivity">
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorBlue">
+
+        <TextView
+            android:id="@+id/txtBackDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_back"
+            android:background="@drawable/backgr_back"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="3dp"
+            android:paddingBottom="5dp"
+            />
+
+        <TextView
+            android:id="@+id/txtNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth"
+            android:text="Keranjang Saya"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="60dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvKeranjang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_keranjang"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <Button
+        android:id="@+id/btnTambahPesan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/backgr_search_location"
+        android:text="Tambah Pesanan"
+        android:textColor="@color/colorWhite3"
+        android:fontFamily="@font/roboto_bold"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+    </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorBlue">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth"
+            android:text="Total Harga : Rp."
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/txtTotHarga"
+            android:textSize="16sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/colorWhite"
+            />
+
+        <TextView
+            android:id="@+id/txtTotHarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth"
+            android:text="50000"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/colorWhite"
+            />
+    </RelativeLayout>
+</RelativeLayout>

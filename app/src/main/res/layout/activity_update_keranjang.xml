@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.home.UpdateKeranjangActivity">
+
+    <ImageView
+        android:id="@+id/imgUpdateKeranjang"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/minuman"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/backgr_jml"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_close"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="230dp"
+        android:background="@drawable/backgr_lokasi">
+
+        <TextView
+            android:id="@+id/txtRasaMenuKrj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Nama Menu"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/txtVarianMenuKrj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_below="@id/txtRasaMenuKrj"
+            android:fontFamily="@font/roboto"
+            android:text="Nama Varian"
+            android:textSize="12sp"
+            android:textColor="@color/colorGray2" />
+
+        <TextView
+            android:id="@+id/hargaSatuanKrj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:fontFamily="@font/roboto"
+            android:drawableLeft="@drawable/ic_baseline_alternate_email_24"
+            android:text="13000"
+            android:textColor="@color/colorGray"
+            android:textSize="12sp"
+            android:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/txtRpMenuKrj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/hargaSatuanKrj"
+            android:layout_toLeftOf="@id/txtHargaMenuKrj"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Rp."
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtHargaMenuKrj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hargaSatuanKrj"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:text="13000"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtVarianMenuKrj"
+            android:background="@drawable/backgr_line_detail_menu"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"/>
+
+        <TextView
+            android:id="@+id/txtTambahanKrj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="5dp"
+            android:text="Pilihan Topping Tambahan :"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/colorBlack"/>
+
+        <TableLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtTambahanKrj"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:orientation="vertical">
+
+            <TableRow>
+                <CheckBox
+                    android:id="@+id/chkBrownBubbleDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Brown Bubble"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_weight="1"/>
+
+                <CheckBox
+                    android:id="@+id/chkRainbowJellyDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Rainbow Jelly"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_weight="1"/>
+
+            </TableRow>
+            <TableRow>
+                <CheckBox
+                    android:id="@+id/chkRegalDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Regal"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_weight="1"/>
+                <CheckBox
+                    android:id="@+id/chkCoffeeJellyDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Jelly Coffee"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_weight="1"/>
+            </TableRow>
+            <TableRow>
+                <CheckBox
+                    android:id="@+id/chkPoppingBobaDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Popping Boba"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_weight="1"/>
+
+                <CheckBox
+                    android:id="@+id/chkCreamCheeseDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Cream Cheese"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_weight="1"/>
+            </TableRow>
+        </TableLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            >
+
+            <FrameLayout
+                android:id="@+id/frameButtonKrj"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:id="@+id/txtJmlUpdateKrj"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="1"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:gravity="center"
+                    android:background="@drawable/backgr_jml"
+                    />
+
+                <Button
+                    android:id="@+id/btnMinKrj"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/backgr_close"
+                    android:drawableLeft="@drawable/ic_min_navy"
+                    android:paddingBottom="18dp"/>
+
+                <Button
+                    android:id="@+id/btnAddKrj"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/backgr_close"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingLeft="3dp"
+                    android:drawableLeft="@drawable/ic_add_navy"
+                    />
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/btnOK"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="3dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="OK"
+                android:textAllCaps="false"
+                android:background="@drawable/backgr_order"
+                android:padding="5dp"
+                android:layout_toRightOf="@id/frameButtonKrj"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

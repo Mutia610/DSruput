@@ -2,6 +2,7 @@ package com.mutia.dsruput.config
 
 import com.mutia.dsruput.model.action.ResponseAction
 import com.mutia.dsruput.model.getData.ResponseGetData
+import com.mutia.dsruput.model.getDataKeranjang.ResponseGetDataKeranjang
 import com.mutia.dsruput.model.getMenu.ResponseGetMenu
 import com.mutia.dsruput.model.login.ResponseLogin
 import io.reactivex.rxjava3.core.Flowable
@@ -21,6 +22,39 @@ interface ApiService {
     //getDataMenu
     @GET("getDataMenu.php")
     fun getMenu(@Query("kode_outlet")kode_outlet:String): Call<ResponseGetMenu>
+
+    //Insert Data Keranjang
+    @FormUrlEncoded
+    @POST("insertKeranjang.php")
+    fun insertKeranjang(@Field("id_menu")id_menu:String,
+                 @Field("id_outlet")id_outlet:String,
+                 @Field("id_user")id_user:String,
+                 @Field("tambahan")tambahan:String,
+                 @Field("jumlah")jumlah:String,
+                 @Field("total_harga")total_harga:String,): Call<ResponseAction>
+
+    //getDataKeranjang
+    @GET("getDataKeranjang.php")
+    fun getDataKeranjang(@Query("id_user")id_user:String): Call<ResponseGetDataKeranjang>
+
+    //delete data keranjang
+    @FormUrlEncoded
+    @POST("deleteKeranjang.php")
+    fun deleteKeranjang(@Field("id_keranjang") id_keranjang : String): Call<ResponseGetDataKeranjang>
+
+    //update data keranjang
+    @FormUrlEncoded
+    @POST("updateKeranjang.php")
+    fun updateKeranjang(@Field("id_keranjang") id_keranjang : String,
+                        @Field("tambahan") tambahan: String,
+                        @Field("jumlah") jumlah: String,
+                        @Field("total_harga") total_harga: String): Call<ResponseGetDataKeranjang>
+
+    //Insert Jumlah Item Keranjang
+    @FormUrlEncoded
+    @POST("insertBagShop.php")
+    fun insertBagShop(@Field("id_costumer")id_costumer:String,
+                      @Field("jumlah")jumlah:String,): Call<ResponseAction>
 
     //Registrasi
     @FormUrlEncoded

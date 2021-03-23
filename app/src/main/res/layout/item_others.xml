@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorWhite"
+    android:padding="15dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/icOthers"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_membership_outline"/>
+
+    <TextView
+        android:id="@+id/textOthers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/icOthers"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true"
+        android:text="Profile"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="@font/roboto"
+        android:textSize="14sp"/>
+
+    <ImageView
+        android:id="@+id/icNextOthers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/ic_black_next"/>
+
+</RelativeLayout>
