@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">#022B7A</color>
     <color name="colorPrimaryDark">#230153</color>
     <color name="colorBlue">#4454A5</color>
     <color name="colorBlue2">#77B3BFFF</color>
+    <color name="colorBlue3">#1C3CDA</color>
     <color name="colorNavyBlue">#03045E</color>
     <color name="colorStarCommandBlue">#0077B6</color>
     <color name="colorBlueCerulean">#00B4D8</color>
@@ -12,6 +13,7 @@
     <color name="colorAccent">#03A9F4</color>
     <color name="colorGreen">#D7018007</color>
     <color name="colorGreen2">#C8FACA</color>
+    <color name="colorGreen3">#E7FAE8</color>
     <color name="colorOrange">#F4A621</color>
     <color name="colorOrangeMedium">#F4A024</color>
     <color name="colorOrangeDark">#ED8E00</color>
@@ -19,13 +21,21 @@
     <color name="colorPlatinum">#E6E5E5E5</color>
     <color name="colorPlatinum2">#BAE5E5E5</color>
     <color name="colorGray">#772B2B2B</color>
+    <color name="colorGray3">#77403F3F</color>
     <color name="colorGray2">#D7272727</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorWhite2">#A8FFFFFF</color>
+    <color name="colorWhite3">#FBFBFB</color>
+    <color name="colorWhite4">#B5FBFBFB</color>
+    <color name="colorWhite5">#B7FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorBlack2">#EB000000</color>
     <color name="colorRed">#B4980000</color>
     <color name="colorRed2">#F48484</color>
+    <color name="colorRed3">#B4DC0000</color>
+    <color name="colorRed4">#F2DF0A0A</color>
     <color name="colorOxfordBlue">#14213D</color>
     <color name="colorOxfordBlue2">#04112C</color>
+    <color name="colorPurple">#9C00DE</color>
+    <color name="colorPurple2">#F4E6FA</color>
 </resources>

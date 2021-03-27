@@ -14,6 +14,7 @@ import com.mutia.dsruput.model.getMenu.DataMenu
 import com.mutia.dsruput.preferences.PrefManager
 import com.mutia.dsruput.view.MenuActivity
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_detail_menu.*
 import kotlinx.android.synthetic.main.activity_menu.view.*
 import kotlinx.android.synthetic.main.item_menu.view.*
 import kotlinx.android.synthetic.main.item_menu.view.txtRasa
@@ -23,9 +24,8 @@ import kotlinx.android.synthetic.main.item_menu.view.txtVarian
 import java.util.*
 import kotlin.coroutines.coroutineContext
 
-class MenuAdapter(val menu: List<DataMenu?>?, val click : OnClickListener) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
-
-    lateinit var prefManager: PrefManager
+class MenuAdapter(val menu: List<DataMenu?>?, val click: OnClickListener) :
+    RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val varian = view.txtVarian
@@ -35,6 +35,13 @@ class MenuAdapter(val menu: List<DataMenu?>?, val click : OnClickListener) : Rec
         val status2 = view.txtStatus2
         val imageMenu = view.imgMenu
         val btnTambah = view.btnTambah
+        val frameFav = view.frameFav
+        var frameButton = view.frameButton
+        val favorite = view.favorite
+        val favOutline = view.favOutline
+        val btnAdd = view.btnAdd
+        val btnMin = view.btnMin
+        val txtJml = view.txtJml
         val context = view.context
     }
 
@@ -56,19 +63,54 @@ class MenuAdapter(val menu: List<DataMenu?>?, val click : OnClickListener) : Rec
         if (item?.status.toString() == "Tersedia") {
             holder.status1.visibility = View.VISIBLE
             holder.status2.visibility = View.GONE
+
+            holder.btnTambah.setOnClickListener {
+                holder.btnTambah.visibility = View.GONE
+                holder.frameButton.visibility = View.VISIBLE
+                click.btnTambah()
+
+                holder.btnAdd.setOnClickListener {
+                    var jmlPesanan = holder.txtJml.text.toString().toInt()
+                    var jmlAdd = jmlPesanan + 1
+                    holder.txtJml.text = jmlAdd.toString()
+                    click.addJml()
+                }
+
+                holder.btnMin.setOnClickListener {
+                    var jmlPesanan = holder.txtJml.text.toString().toInt()
+                    var jmlMin = jmlPesanan-1
+
+                    if (jmlMin < 1){
+                        holder.btnTambah.visibility = View.VISIBLE
+                        holder.frameButton.visibility = View.GONE
+                    }else
+                    {
+                        holder.txtJml.text = jmlMin.toString()
+                    }
+                    click.minJml()
+                }
+            }
         } else if (item?.status.toString() == "Tidak Tersedia") {
             holder.status2.visibility = View.VISIBLE
             holder.status1.visibility = View.GONE
+
+            holder.btnTambah.setOnClickListener {
+
+            }
         }
 
-        holder.view.setOnClickListener{
+        holder.view.setOnClickListener {
             click.detailMenu(item)
         }
 
-        if (item?.status.toString() == "Tersedia"){
-            holder.btnTambah.setOnClickListener {
-                click.btnTambah()
-            }
+        holder.frameFav.setOnClickListener {
+            holder.favorite.visibility = View.VISIBLE
+            holder.favOutline.visibility = View.GONE
+        }
+
+        holder.favorite.setOnClickListener {
+            holder.favorite.visibility = View.GONE
+            holder.favOutline.visibility = View.VISIBLE
         }
 
 //        var namaOutlet = prefManager.getValueString("NAMA_OUTLET").toString()
@@ -77,8 +119,10 @@ class MenuAdapter(val menu: List<DataMenu?>?, val click : OnClickListener) : Rec
 
     override fun getItemCount(): Int = menu?.size ?: 0
 
-    interface OnClickListener{
+    interface OnClickListener {
         fun detailMenu(data: DataMenu?)
         fun btnTambah()
+        fun addJml()
+        fun minJml()
     }
 }

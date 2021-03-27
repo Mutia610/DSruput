@@ -24,7 +24,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     lateinit var navController: NavController
     lateinit var prefManager: PrefManager
- //   val login: List<DataItem?>? = null
+ //   val login: List<DataItemKeranjang?>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,11 +48,12 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
         prefManager = PrefManager(requireContext())
 
+
         // langsung login
-       // Log.d("tes","tes 1 :"+prefManager.getValueInt("id"))
-        if (prefManager.getValueInt("id")!=0){
-            navController.navigate(R.id.action_loginFragment_to_outletFragment)
-            Log.d("tes","tes  :"+prefManager.getValueInt("id"))
+//        Log.d("tes","tes 1 :"+prefManager.getValueInt("id"))
+        if (prefManager.getValueInt("id") !=0){
+            navController.navigate(R.id.action_loginFragment_to_navActivity)
+//            Log.d("tes","tes  :"+prefManager.getValueInt("id"))
         }
     }
 
@@ -91,13 +92,20 @@ class LoginFragment : Fragment(), View.OnClickListener {
                         if (response.isSuccessful){
                             val status = response.body()?.isSuccess
                             val message = response.body()?.message
+                            val dataUser = response.body()?.data
+
+                            val idUser = dataUser?.get(0)?.id.toString().toInt()
+                            val namaUser = dataUser?.get(0)?.username.toString()
 
                             if (status ?: true){
-                                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, message , Toast.LENGTH_SHORT).show()
 
-                                prefManager.save("id",1)
+                                //prefManager.save("id",1)
 
-                                navController.navigate(R.id.action_loginFragment_to_outletFragment)
+                                prefManager.save("id",idUser)
+                                prefManager.save("namaUser", namaUser)
+
+                                navController.navigate(R.id.action_loginFragment_to_navActivity)
                             }else
                             {
                                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show()

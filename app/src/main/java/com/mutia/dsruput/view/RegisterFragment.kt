@@ -13,6 +13,7 @@ import com.example.easywaylocation.Listener
 import com.mutia.dsruput.R
 import com.mutia.dsruput.config.Network
 import com.mutia.dsruput.model.action.ResponseAction
+import com.mutia.dsruput.preferences.PrefManager
 import kotlinx.android.synthetic.main.fragment_register.*
 import retrofit2.Call
 import retrofit2.Callback

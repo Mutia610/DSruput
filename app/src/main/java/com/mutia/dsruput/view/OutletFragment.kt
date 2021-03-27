@@ -68,22 +68,7 @@ class OutletFragment : Fragment(), Listener, LocationData.AddressCallBack {
         getLocationDetail = GetLocationDetail(this, context)
         easyWayLocation = EasyWayLocation(context, false, this)
 
-        navController = Navigation.findNavController(view)
-
-        txtOptionMenu.setOnClickListener {
-            AlertDialog.Builder(context).apply {
-                setTitle("Sign Out")
-                setMessage("Yakin ingin keluar ?")
-                setCancelable(false)
-                setPositiveButton("Yakin") { dialogInterface, i ->
-                    prefManager.removeValue("id")
-                    navController.navigate(R.id.action_outletFragment_to_loginFragment)
-                }
-                setNegativeButton("Batal") { dialogInterface, i ->
-                    dialogInterface.dismiss()
-                }
-            }.show()
-        }
+//        navController = Navigation.findNavController(view)
 
         if (permissionIsGranted()) {
             doLocationWork()
@@ -144,8 +129,6 @@ class OutletFragment : Fragment(), Listener, LocationData.AddressCallBack {
                         var jarak = String.format("%.2f", distance!! / 1000) + " Km"
 
                         response.body()?.data?.get(i)?.jarak = jarak
-
-                        Log.d("jarak","jarak : " + jarak + " lng :" + ntdOutlet)
                     }
 
                     val adapter = OutletAdapater(item?.sortedBy {it?.jarak },
@@ -208,6 +191,9 @@ class OutletFragment : Fragment(), Listener, LocationData.AddressCallBack {
 
     override fun locationData(locationData: LocationData?) {
         location!!.text = locationData?.full_address
+
+        prefManager.save("AlamatUser", locationData?.full_address!!)
+
         progressBar.visibility = View.GONE
     }
 

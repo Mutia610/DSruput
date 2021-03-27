@@ -19,11 +19,8 @@
             app:exitAnim="@anim/slide_out_left"
             />
         <action
-            android:id="@+id/action_loginFragment_to_outletFragment"
-            app:destination="@id/outletFragment"
-            app:popExitAnim="@anim/slide_out_top"
-            app:exitAnim="@anim/slide_out_bottom"
-            />
+            android:id="@+id/action_loginFragment_to_navActivity"
+            app:destination="@id/navActivity" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -38,14 +35,10 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"/>
     </fragment>
-    <fragment
-        android:id="@+id/outletFragment"
-        android:name="com.mutia.dsruput.view.OutletFragment"
-        android:label="fragment_outlet"
-        tools:layout="@layout/fragment_outlet" >
-        <action
-            android:id="@+id/action_outletFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
+    <activity
+        android:id="@+id/navActivity"
+        android:name="com.mutia.dsruput.view.dashboard.NavActivity"
+        android:label="activity_nav"
+        tools:layout="@layout/activity_nav" />
 
 </navigation>

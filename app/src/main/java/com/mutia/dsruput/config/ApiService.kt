@@ -1,9 +1,15 @@
 package com.mutia.dsruput.config
 
+import com.mutia.dsruput.model.ResponseActionKonfirmasi
+import com.mutia.dsruput.model.ResponseActionOrders
+import com.mutia.dsruput.model.ResponseDetailOrder
+import com.mutia.dsruput.model.ResponseDetailRiwayat
 import com.mutia.dsruput.model.action.ResponseAction
 import com.mutia.dsruput.model.getData.ResponseGetData
+import com.mutia.dsruput.model.getDataKeranjang.ResponseGetDataKeranjang
 import com.mutia.dsruput.model.getMenu.ResponseGetMenu
 import com.mutia.dsruput.model.login.ResponseLogin
+import com.mutia.dsruput.model.riwayat.ResponseDataRiwayat
 import io.reactivex.rxjava3.core.Flowable
 import retrofit2.Call
 import retrofit2.http.*
@@ -21,6 +27,68 @@ interface ApiService {
     //getDataMenu
     @GET("getDataMenu.php")
     fun getMenu(@Query("kode_outlet")kode_outlet:String): Call<ResponseGetMenu>
+
+    //Insert Data Keranjang
+    @FormUrlEncoded
+    @POST("insertKeranjang.php")
+    fun insertKeranjang(@Field("id_menu")id_menu:String,
+                 @Field("id_outlet")id_outlet:String,
+                 @Field("id_user")id_user:String,
+                 @Field("tambahan")tambahan:String,
+                 @Field("jumlah")jumlah:String,
+                 @Field("total_harga")total_harga:String,): Call<ResponseAction>
+
+    //getDataKeranjang
+    @GET("getDataKeranjang.php")
+    fun getDataKeranjang(@Query("id_user")id_user:String): Call<ResponseGetDataKeranjang>
+
+    //delete data keranjang
+    @FormUrlEncoded
+    @POST("deleteKeranjang.php")
+    fun deleteKeranjang(@Field("id_keranjang") id_keranjang : String): Call<ResponseGetDataKeranjang>
+
+    //update data keranjang
+    @FormUrlEncoded
+    @POST("updateKeranjang.php")
+    fun updateKeranjang(@Field("id_keranjang") id_keranjang : String,
+                        @Field("tambahan") tambahan: String,
+                        @Field("jumlah") jumlah: String,
+                        @Field("total_harga") total_harga: String): Call<ResponseGetDataKeranjang>
+
+    //Insert Jumlah Item Keranjang
+    @FormUrlEncoded
+    @POST("insertBagShop.php")
+    fun insertBagShop(@Field("id_costumer")id_costumer:String,
+                      @Field("jumlah")jumlah:String): Call<ResponseAction>
+
+    //Get Data Riwayat
+    @GET("getOrders.php")
+    fun getOrders(@Query("id_costumer")id_costumer:String): Call<ResponseDataRiwayat>
+
+    //Get Data Detail Riwayat
+    @GET("getOrderDetail.php")
+    fun getOrderDetail(@Query("id_order")id_order:String): Call<ResponseDetailRiwayat>
+
+    //get Data Detail Order
+    @GET("getDetailOrder.php")
+    fun getDetailOrder(@Query("id_order")id_order:String): Call<ResponseDetailOrder>
+
+    //Insert Orders
+    @FormUrlEncoded
+    @POST("insertOrders.php")
+    fun insertOrders(@Field("id_costumer")id_costumer:String,
+                     @Field("nama_costumer")nama_costumer:String,
+                      @Field("total")total:String,
+                     @Field("alamat_customer")alamat_customer:String,
+                     @Field("total_bayar")total_bayar:String,
+                     @Field("metode")metode:String): Call<ResponseActionOrders>
+
+    //Insert Konfirmasi Pembayaran
+    @FormUrlEncoded
+    @POST("konfirmasi.php")
+    fun konfirmasi(@Field("id_order")id_order:String,
+                   @Field("bukti_bayar")bukti_bayar:String,
+                   @Field("total_bayar")total_bayar:String): Call<ResponseActionKonfirmasi>
 
     //Registrasi
     @FormUrlEncoded

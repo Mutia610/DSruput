@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mutia.dsruput.view.dashboard.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/outletFragment2"
+        android:name="com.mutia.dsruput.view.OutletFragment"
+        android:label="fragment_outlet"
+        tools:layout="@layout/fragment_outlet" />
+    <fragment
+        android:id="@+id/othersFragment"
+        android:name="com.mutia.dsruput.view.dashboard.OthersFragment"
+        android:label="fragment_others"
+        tools:layout="@layout/fragment_others" />
+    <fragment
+        android:id="@+id/promoFragment"
+        android:name="com.mutia.dsruput.view.dashboard.PromoFragment"
+        android:label="fragment_promo"
+        tools:layout="@layout/fragment_promo" />
+    <fragment
+        android:id="@+id/riwayatFragment"
+        android:name="com.mutia.dsruput.view.dashboard.RiwayatFragment"
+        android:label="fragment_riwayat"
+        tools:layout="@layout/fragment_riwayat" />
+</navigation>

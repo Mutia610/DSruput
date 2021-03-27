@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPlatinum"
+    android:background="@color/colorWhite3"
     tools:context=".view.MenuActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:padding="20dp"
+        android:layout_height="60dp"
         android:background="@drawable/backgr_daftar_menu">
 
         <TextView
@@ -20,27 +19,58 @@
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_back"
             android:background="@drawable/backgr_back"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:paddingRight="3dp"
             android:paddingBottom="5dp"
-            android:textAlignment="center"
             />
 
         <TextView
             android:id="@+id/titleOutlet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth"
             android:text="Daftar Menu"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_centerInParent="true"
             android:layout_gravity="center_vertical"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/colorWhite"
             android:textStyle="bold"
             />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/icBagShop"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_bag_shop" />
+
+            <TextView
+                android:id="@+id/jmlBeli"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="end"
+                android:background="@drawable/backgr_text_bag_shop"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/amaranth"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:visibility="gone"/>
+        </FrameLayout>
 
     </RelativeLayout>
 
@@ -48,7 +78,9 @@
         android:id="@+id/recylerMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="3dp"
+        android:paddingLeft="3dp"
         tools:listitem="@layout/item_menu"
         app:spanCount="2"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
