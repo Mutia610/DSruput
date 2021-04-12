@@ -9,6 +9,17 @@ class PrefManager(var c:Context) {
     private val PREFS_NAME = "lokasi"
     val sharedPref: SharedPreferences = c.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
+    var ISLOGIN="isLogin"
+    var login: Boolean?
+
+    get() = sharedPref?.getBoolean(ISLOGIN,false)
+
+    set(login){
+        val editor: SharedPreferences.Editor = sharedPref.edit()
+         editor?.putBoolean(ISLOGIN,true)
+         editor?.commit()
+    }
+
     fun save(KEY_NAME: String, text: String) {
 
         val editor: SharedPreferences.Editor = sharedPref.edit()
@@ -35,16 +46,6 @@ class PrefManager(var c:Context) {
         editor.commit()
     }
 
-    fun saveJarak(KEY_NAME: String, jarak: Set<String>) {
-        val editor: SharedPreferences.Editor = sharedPref.edit()
-        editor.putStringSet(KEY_NAME, jarak)
-        editor.commit()
-    }
-
-    fun getArray(KEY_NAME: String): Set<String>?{
-        return sharedPref.getStringSet(KEY_NAME, null)
-    }
-
     fun getValueString(KEY_NAME: String): String? {
         return sharedPref.getString(KEY_NAME, null)
     }
@@ -57,11 +58,11 @@ class PrefManager(var c:Context) {
         return sharedPref.getFloat(KEY_NAME, 0F)
     }
 
-    fun getValueBoolien(KEY_NAME: String, defaultValue: Boolean): Boolean {
+    fun getValueBoolean(KEY_NAME: String, defaultValue: Boolean): Boolean {
         return sharedPref.getBoolean(KEY_NAME, defaultValue)
     }
 
-    fun clearSharedPreference() {
+    fun logout() {
         val editor: SharedPreferences.Editor = sharedPref.edit()
 
         //sharedPref = PreferenceManager.getDefaultSharedPreferences(context);

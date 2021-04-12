@@ -30,7 +30,14 @@
         android:roundIcon="@mipmap/ic_dsruput_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.dashboard.DetailRiwayatActivity"></activity>
+        <activity android:name=".view.dashboard.faqActivity"></activity>
+        <activity android:name=".view.dashboard.ContactActivity" />
+        <activity android:name=".view.dashboard.AboutActivity" />
+        <activity android:name=".view.dashboard.BeritaActivity" />
+        <activity android:name=".view.ProgressActivity" />
+        <activity android:name=".view.dashboard.UserProfileActivity" />
+        <activity android:name=".view.dashboard.MessageActivity" />
+        <activity android:name=".view.dashboard.DetailRiwayatActivity" />
         <activity android:name=".view.dashboard.KonfirmasiActivity" />
         <activity android:name=".view.dashboard.CheckoutActivity" />
         <activity android:name=".view.dashboard.UpdateKeranjangActivity" />

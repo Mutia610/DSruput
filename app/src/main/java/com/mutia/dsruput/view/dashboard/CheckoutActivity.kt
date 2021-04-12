@@ -132,9 +132,7 @@ class CheckoutActivity : AppCompatActivity() {
                     {
                         Toast.makeText(applicationContext, "Respon Failed", Toast.LENGTH_SHORT).show()
                     }
-
                 }
-
                 override fun onFailure(call: Call<ResponseActionOrders>, t: Throwable) {
                     Toast.makeText(applicationContext, "Gagal Get Data", Toast.LENGTH_SHORT).show()
                 }

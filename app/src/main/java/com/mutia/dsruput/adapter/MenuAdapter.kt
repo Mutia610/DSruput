@@ -9,6 +9,7 @@ import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mutia.dsruput.R
+import com.mutia.dsruput.config.Url
 import com.mutia.dsruput.model.getData.DataItem
 import com.mutia.dsruput.model.getMenu.DataMenu
 import com.mutia.dsruput.preferences.PrefManager
@@ -57,7 +58,7 @@ class MenuAdapter(val menu: List<DataMenu?>?, val click: OnClickListener) :
         holder.harga.text = item?.harga
         holder.varian.text = item?.varian
 
-        Picasso.get().load("http://192.168.43.84/dsruput/img/menu/" + item?.gambar)
+        Picasso.get().load(Url.urlImageMenu + item?.gambar)
             .into(holder.imageMenu)
 
         if (item?.status.toString() == "Tersedia") {
@@ -67,13 +68,13 @@ class MenuAdapter(val menu: List<DataMenu?>?, val click: OnClickListener) :
             holder.btnTambah.setOnClickListener {
                 holder.btnTambah.visibility = View.GONE
                 holder.frameButton.visibility = View.VISIBLE
-                click.btnTambah()
+                click.btnTambah(item)
 
                 holder.btnAdd.setOnClickListener {
                     var jmlPesanan = holder.txtJml.text.toString().toInt()
                     var jmlAdd = jmlPesanan + 1
                     holder.txtJml.text = jmlAdd.toString()
-                    click.addJml()
+                    click.addJml(item)
                 }
 
                 holder.btnMin.setOnClickListener {
@@ -112,17 +113,14 @@ class MenuAdapter(val menu: List<DataMenu?>?, val click: OnClickListener) :
             holder.favorite.visibility = View.GONE
             holder.favOutline.visibility = View.VISIBLE
         }
-
-//        var namaOutlet = prefManager.getValueString("NAMA_OUTLET").toString()
-//        holder.outlet.text = namaOutlet
     }
 
     override fun getItemCount(): Int = menu?.size ?: 0
 
     interface OnClickListener {
         fun detailMenu(data: DataMenu?)
-        fun btnTambah()
-        fun addJml()
+        fun btnTambah(data: DataMenu?)
+        fun addJml(data: DataMenu?)
         fun minJml()
     }
 }

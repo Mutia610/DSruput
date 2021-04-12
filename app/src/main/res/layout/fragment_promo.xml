@@ -35,7 +35,7 @@
             android:fontFamily="@font/roboto_medium"
             android:drawableLeft="@drawable/ic_voucher"
             android:drawablePadding="8dp"
-            android:text="200 Voucher"
+            android:text="200 Poin"
             android:textColor="@color/colorBlack"
             android:textSize="12sp"/>
     </RelativeLayout>

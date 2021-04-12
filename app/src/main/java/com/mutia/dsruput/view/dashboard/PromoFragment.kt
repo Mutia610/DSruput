@@ -1,10 +1,10 @@
 package com.mutia.dsruput.view.dashboard
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mutia.dsruput.R
 import com.mutia.dsruput.adapter.ViewPagerPromoAdapter
@@ -33,20 +33,26 @@ class PromoFragment : Fragment() {
 
         viewPagerPromo.adapter = adapter
 
-        TabLayoutMediator(tabLayout,viewPagerPromo){tab,position->
+        TabLayoutMediator(tabLayout, viewPagerPromo){ tab, position->
             when(position){
-                0->{
-                    tab.text="Subscription"
+                0 -> {
+                    tab.text = "Subscription"
                 }
-                1->{
-                    tab.text="Deals"
+                1 -> {
+                    tab.text = "Deals"
                 }
-                2->{
-                    tab.text="Voucher Saya"
+                2 -> {
+                    tab.text = "Voucher Saya"
                 }
             }
         }.attach()
-
-
     }
+
+//    fun prev(view: View?) {
+//        viewPager.setCurrentItem(viewPager.getCurrentItem() - 1, true)
+//    }
+//
+//    fun next(view: View?) {
+//        viewPager.setCurrentItem(viewPager.getCurrentItem() + 1, true)
+//    }
 }

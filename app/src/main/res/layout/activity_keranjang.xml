@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/swipeKeranjang"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeKeranjang"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite3"
@@ -18,110 +18,142 @@
             android:id="@+id/txtBackDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_back"
-            android:background="@drawable/backgr_back"
-            android:layout_marginLeft="15dp"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/backgr_back"
+            android:drawableEnd="@drawable/ic_back"
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:paddingRight="3dp"
-            android:paddingBottom="5dp"
-            />
+            android:paddingBottom="5dp" />
 
         <TextView
             android:id="@+id/txtNama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/amaranth"
-            android:text="Keranjang Saya"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_centerInParent="true"
             android:layout_gravity="center_vertical"
-            android:textSize="20sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            />
-    </RelativeLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/relative">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginBottom="60dp">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvKeranjang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_keranjang"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-    <Button
-        android:id="@+id/btnTambahPesan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/backgr_search_location"
-        android:text="Tambah Pesanan"
-        android:textColor="@color/colorWhite3"
-        android:fontFamily="@font/roboto_bold"
-        android:textAllCaps="false"
-        android:textSize="14sp"
-        android:gravity="center"
-        android:layout_gravity="center"/>
-
-    </LinearLayout>
-    </ScrollView>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorBlue">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/amaranth"
-            android:text="Total Harga : Rp."
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/txtTotHarga"
-            android:textSize="16sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/colorWhite"
-            />
-
-        <TextView
-            android:id="@+id/txtTotHarga"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:fontFamily="@font/amaranth"
-            android:text="50000"
-            android:layout_toLeftOf="@id/btnCheckout"
-            android:layout_centerVertical="true"
-            android:textSize="20sp"
+            android:text="Keranjang Saya"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/colorWhite"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
-        <Button
-            android:id="@+id/btnCheckout"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorNavyBlue"
-            android:layout_alignParentRight="true"
+    <RelativeLayout
+        android:id="@+id/keranjangKosong"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_below="@id/relative"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imgEmptyCart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/img_empty_cart" />
+
+        <TextView
+            android:layout_below="@+id/imgEmptyCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:layout_marginBottom="15dp"
             android:fontFamily="@font/amaranth"
-            android:text="Checkout"
-            android:textColor="@color/colorWhite"/>
+            android:text="No Item"
+            android:textColor="@color/colorBlue"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/dataKeranjang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative"
+        android:visibility="visible">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="60dp"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvKeranjang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_keranjang" />
+
+                <Button
+                    android:id="@+id/btnTambahPesan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="60dp"
+                    android:background="@drawable/backgr_search_location"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Tambah Pesanan"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite3"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorBlue">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/txtTotHarga"
+                android:fontFamily="@font/amaranth"
+                android:text="Total Harga : Rp."
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtTotHarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/btnCheckout"
+                android:fontFamily="@font/amaranth"
+                android:text="50000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnCheckout"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@color/colorNavyBlue"
+                android:fontFamily="@font/amaranth"
+                android:text="Checkout"
+                android:textColor="@color/colorWhite" />
+        </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

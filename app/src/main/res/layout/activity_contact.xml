@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite3"
+    tools:context=".view.dashboard.ContactActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/backgr_daftar_menu">
+
+        <TextView
+            android:id="@+id/txtBackContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_back"
+            android:background="@drawable/backgr_back"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="3dp"
+            android:paddingBottom="5dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth"
+            android:text="Hubungi Kami"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:text="OUR OFFICE"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            android:textAlignment="center"/>
+
+        <ImageView
+            android:id="@+id/imgOffice"
+            android:layout_below="@id/text"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_office_building"/>
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_below="@id/text"
+            android:layout_toRightOf="@id/imgOffice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:text="Jl. M. Kahfi 1 Gg Pembangunan no.55 Jagakarsa Jakarta Selatan, DKI Jakarta."
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"/>
+
+        <ImageView
+            android:id="@+id/imgTelephone"
+            android:layout_below="@id/imgOffice"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_telephone"/>
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_below="@id/text2"
+            android:layout_toRightOf="@id/imgTelephone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:text="(021) 78885759"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"/>
+
+        <ImageView
+            android:id="@+id/imgEmail"
+            android:layout_below="@id/imgTelephone"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_gmail"/>
+
+        <TextView
+            android:id="@+id/text4"
+            android:layout_below="@id/text3"
+            android:layout_toRightOf="@id/imgEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:text="contact@dsruput.com"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:id="@+id/text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:text="OUR SOCIAL MEDIA"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            android:textAlignment="center"/>
+
+        <ImageView
+            android:id="@+id/imgIg"
+            android:layout_below="@id/text5"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_instagram"/>
+
+        <TextView
+            android:id="@+id/text6"
+            android:layout_below="@id/text5"
+            android:layout_toRightOf="@id/imgIg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/textIg"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"/>
+
+        <ImageView
+            android:id="@+id/imgWeb"
+            android:layout_below="@id/imgIg"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_domain"/>
+
+        <TextView
+            android:id="@+id/text7"
+            android:layout_below="@id/text6"
+            android:layout_toRightOf="@id/imgWeb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:text="www.drinkandsruput.com"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"/>
+
+
+    </RelativeLayout>
+</LinearLayout>

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mutia.dsruput.R
 import com.mutia.dsruput.adapter.OthersAdapter
+import com.mutia.dsruput.preferences.SessionManager
 import com.mutia.dsruput.model.others.DataOthers
 import com.mutia.dsruput.preferences.PrefManager
 import com.mutia.dsruput.view.MainActivity
@@ -47,9 +48,16 @@ class OthersFragment : Fragment() {
 
         val adapter1 = OthersAdapter(dataKolomSatu,object : OthersAdapter.OnClickListener{
             override fun detail(keterangan: String?) {
+                if (keterangan.equals("Profile")){
+                    startActivity(Intent(context, UserProfileActivity::class.java))
+                }else if (keterangan.equals("Berita")){
+                    startActivity(Intent(context, BeritaActivity::class.java))
+                }else if (keterangan.equals("Membership")){
+                   // startActivity(Intent(context, BeritaActivity::class.java))
+                }else{
 
+                }
             }
-
         })
 
         recyclerKolom1.setLayoutManager(LinearLayoutManager(context))
@@ -64,33 +72,37 @@ class OthersFragment : Fragment() {
 
         val adapter2 = OthersAdapter(dataKolomDua,object : OthersAdapter.OnClickListener{
             override fun detail(keterangan: String?) {
-
+                if (keterangan.equals("Tentang")){
+                    startActivity(Intent(context, AboutActivity::class.java))
+                }else if (keterangan.equals("FAQ")){
+                    startActivity(Intent(context, faqActivity::class.java))
+                }else if (keterangan.equals("Syarat dan Ketentuan")){
+//                    startActivity(Intent(context, AboutActivity::class.java))
+                }else{
+                    startActivity(Intent(context, ContactActivity::class.java))
+                }
             }
-
         })
 
         recyclerKolom2.setLayoutManager(LinearLayoutManager(context))
         recyclerKolom2.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         recyclerKolom2.adapter = adapter2
 
-
         navController = Navigation.findNavController(view)
 
         btnSignOut.setOnClickListener {
+            val session = SessionManager(requireContext())
             AlertDialog.Builder(context).apply {
                 setTitle("Sign Out")
                 setMessage("Yakin ingin keluar ?")
                 setCancelable(false)
                 setPositiveButton("Yakin") { dialogInterface, i ->
-                //    prefManager.removeValue("id")
-                   // startActivity(Intent(context, MainActivity::class.java))
-                    //navController.navigate(R.id.action_othersFragment2_to_loginFragment)
-//                    activity?.finish()
-//                    val intent = Intent(context, MainActivity::class.java)
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-//                    startActivity(intent)
+                    session.logout()
+                    val intent = Intent(context, MainActivity::class.java)
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
                     activity?.finish()
                 }
                 setNegativeButton("Batal") { dialogInterface, i ->

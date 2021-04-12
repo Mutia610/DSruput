@@ -29,10 +29,6 @@ class UpdateKeranjangActivity : AppCompatActivity() {
         val view = layoutInflater.inflate(R.layout.activity_update_keranjang, null)
         dialog.setView(view)
 
-//        view.back.setOnClickListener {
-//            dialogView?.dismiss()
-//        }
-
         dialogView = dialog.create()
         dialogView?.show()
     }

@@ -1,9 +1,6 @@
 package com.mutia.dsruput.config
 
-import com.mutia.dsruput.model.ResponseActionKonfirmasi
-import com.mutia.dsruput.model.ResponseActionOrders
-import com.mutia.dsruput.model.ResponseDetailOrder
-import com.mutia.dsruput.model.ResponseDetailRiwayat
+import com.mutia.dsruput.model.*
 import com.mutia.dsruput.model.action.ResponseAction
 import com.mutia.dsruput.model.getData.ResponseGetData
 import com.mutia.dsruput.model.getDataKeranjang.ResponseGetDataKeranjang
@@ -55,6 +52,13 @@ interface ApiService {
                         @Field("jumlah") jumlah: String,
                         @Field("total_harga") total_harga: String): Call<ResponseGetDataKeranjang>
 
+    //update jumlah data keranjang
+    @FormUrlEncoded
+    @POST("updateJmlKeranjang.php")
+    fun updateJmlKeranjang(@Field("id_menu") id_keranjang : String,
+                        @Field("jumlah") jumlah: String,
+                        @Field("total_harga") total_harga: String): Call<ResponseGetDataKeranjang>
+
     //Insert Jumlah Item Keranjang
     @FormUrlEncoded
     @POST("insertBagShop.php")
@@ -103,35 +107,30 @@ interface ApiService {
     fun login(@Field("email")email:String,
               @Field("password")password:String): Call<ResponseLogin>
 
+    //getDataUser
+    @GET("getUsers.php")
+    fun getUsers(@Query("id")id:String): Call<ResponseGetUsers>
 
-
-
-
-
-
-
-
-
-
-/*
-    //insert
+    //Update Users With Password
     @FormUrlEncoded
-    @POST("insertOutlet.php")
-    fun  insertOutlet(@Field("nama_outlet") nama_outlet : String,
-                      @Field("alamat") alamat : String,
-                      @Field("gambar_outlet") gambar_outlet : String): Flowable<ResponseAction>
+    @POST("updateUsers.php")
+    fun updateUsersPass(@Field("id") id : String,
+                        @Field("username")username:String,
+                        @Field("email")email:String,
+                        @Field("password")password:String,
+                        @Field("no_telp")no_telp:String,
+                        @Field("jenis_kelamin")jenis_kelamin:String): Call<ResponseAction>
 
-    //update
+    //Update Users Without Password
     @FormUrlEncoded
-    @POST("updateOutlet.php")
-    fun updateOutlet(@Field("kode_outlet") kode_outlet : String,
-                    @Field("nama_outlet") nama_outlet: String,
-                    @Field("alamat") alamat: String,
-                    @Field("gambar_outlet") gambar_outlet: String): Flowable<ResponseAction>
+    @POST("updateUsers.php")
+    fun updateUsers(@Field("id") id : String,
+                    @Field("username")username:String,
+                    @Field("email")email:String,
+                    @Field("no_telp")no_telp:String,
+                    @Field("jenis_kelamin")jenis_kelamin:String): Call<ResponseAction>
 
-    //delete
-    @FormUrlEncoded
-    @POST("deleteOutlet.php")
-    fun deleteOutlet(@Field("kode_outlet") kode_outlet: String) : Flowable<ResponseAction>
-*/
+    //getBerita
+    @GET("getBerita.php")
+    fun getDataBerita(): Call<ResponseGetDatBerita>
 }

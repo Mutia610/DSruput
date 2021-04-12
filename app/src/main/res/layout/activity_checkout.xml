@@ -155,7 +155,8 @@
                     android:text="Belanja Lagi"
                     android:textAllCaps="false"
                     android:textColor="@color/colorBlue"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/text3"

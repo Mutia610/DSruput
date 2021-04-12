@@ -4,11 +4,13 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.mutia.dsruput.R
 import com.mutia.dsruput.adapter.KeranjangAdapter
 import com.mutia.dsruput.config.Network
+import com.mutia.dsruput.config.Url
 import com.mutia.dsruput.model.action.ResponseAction
 import com.mutia.dsruput.model.getDataKeranjang.DataItemKeranjang
 import com.mutia.dsruput.model.getDataKeranjang.ResponseGetDataKeranjang
@@ -46,20 +48,6 @@ class KeranjangActivity : AppCompatActivity() {
 
         btnTambahPesan.setOnClickListener {
             onBackPressed()
-//            val intent = Intent(this, MenuActivity::class.java)
-//            intent.putExtra("ID_OUTLET", 1)
-//            startActivity(intent)
-
-           // startActivity(Intent(this, MainActivity::class.java))
-//            val message: String = "hai"
-//            val data = Bundle()
-//            data.putString(F.KEY_ACTIVITY, message)
-//            val outlet = OutletFragment()
-//            outlet.setArguments(data)
-//            supportFragmentManager
-//                .beginTransaction()
-//                .replace(R.id.recylerOutlet, outlet)
-//                .commit()
         }
     }
 
@@ -93,32 +81,40 @@ class KeranjangActivity : AppCompatActivity() {
                         }
                     }
 
-                    val adapter = KeranjangAdapter(item, object : KeranjangAdapter.OnClickListener {
+                    if (banyak.toInt() < 1){
+                        keranjangKosong.visibility = View.VISIBLE
+                        dataKeranjang.visibility = View.GONE
+                    }else{
+                        keranjangKosong.visibility = View.GONE
+                        dataKeranjang.visibility = View.VISIBLE
 
-                        override fun hapus(item: DataItemKeranjang?) {
-                            deleteKeranjang(item?.idKeranjang)
-                        }
+                        val adapter = KeranjangAdapter(item, object : KeranjangAdapter.OnClickListener {
 
-                        override fun detail(item: DataItemKeranjang?) {
-                            showDialogUpdate(item!!)
-                        }
+                            override fun hapus(item: DataItemKeranjang?) {
+                                deleteKeranjang(item?.idKeranjang)
+                            }
 
-                        override fun updateHarga() {
-                            var totHarga = 0
+                            override fun detail(item: DataItemKeranjang?) {
+                                showDialogUpdate(item!!)
+                            }
 
-                            for (i in 0..(banyak!! - 1)) {
-                                totHarga = totHarga.plus(item.get(i)?.total_harga.toString().toInt())
+                            override fun updateHarga() {
+                                var totHarga = 0
 
-                                if (i == (banyak - 1)) {
-                                    txtTotHarga.text = totHarga.toString()
+                                for (i in 0..(banyak!! - 1)) {
+                                    totHarga = totHarga.plus(item.get(i)?.total_harga.toString().toInt())
+
+                                    if (i == (banyak - 1)) {
+                                        txtTotHarga.text = totHarga.toString()
+                                    }
                                 }
                             }
-                        }
 
-                    })
+                        })
 
-                    rvKeranjang.adapter = adapter
-                    adapter.notifyDataSetChanged()
+                        rvKeranjang.adapter = adapter
+//                        adapter.notifyDataSetChanged()
+                    }
 
                 } else {
                     Toast.makeText(this@KeranjangActivity, "Respon Get Data Gagal", Toast.LENGTH_SHORT).show()
@@ -144,7 +140,7 @@ class KeranjangActivity : AppCompatActivity() {
         view.txtHargaMenuKrj.setText(itemKeranjang.total_harga)
         view.txtJmlUpdateKrj.setText(itemKeranjang.jumlah)
 
-        Picasso.get().load("http://192.168.43.84/dsruput/img/menu/" + itemKeranjang.gambar).into(
+        Picasso.get().load(Url.urlImageMenu + itemKeranjang.gambar).into(
             view.imgUpdateKeranjang
         )
 
@@ -291,7 +287,7 @@ class KeranjangActivity : AppCompatActivity() {
         view.hargaSatuanKrj.setText(itemKeranjang.harga)
         view.txtHargaMenuKrj.setText(totHarga.toString())
         view.txtJmlUpdateKrj.setText(jml.toString())
-        Picasso.get().load("http://192.168.43.84/dsruput/img/menu/" + itemKeranjang.gambar).into(
+        Picasso.get().load(Url.urlImageMenu + itemKeranjang.gambar).into(
             view.imgUpdateKeranjang
         )
 
@@ -426,7 +422,7 @@ class KeranjangActivity : AppCompatActivity() {
         view.hargaSatuanKrj.setText(itemKeranjang.harga)
         view.txtHargaMenuKrj.setText(totHargaKurang.toString())
         view.txtJmlUpdateKrj.setText(jmlKurang.toString())
-        Picasso.get().load("http://192.168.43.84/dsruput/img/menu/" + itemKeranjang.gambar).into(
+        Picasso.get().load(Url.urlImageMenu + itemKeranjang.gambar).into(
             view.imgUpdateKeranjang
         )
 
@@ -490,6 +486,7 @@ class KeranjangActivity : AppCompatActivity() {
                 response: Response<ResponseGetDataKeranjang>
             ) {
                 Toast.makeText(applicationContext, "Data berhasil diupdate", Toast.LENGTH_SHORT).show()
+                showDataKeranjang()
                // finish()
             }
 
@@ -521,63 +518,5 @@ class KeranjangActivity : AppCompatActivity() {
 
 
     }
-
-    private fun onCheck(): String{
-        var topping = " "
-
-        val view = layoutInflater.inflate(R.layout.activity_update_keranjang, null)
-
-        if (view.chkBrownBubbleDialog.isChecked){
-            if (topping != " "){
-                topping = topping + " + " + view.chkBrownBubbleDialog.text.toString()
-            }else{
-                topping = view.chkBrownBubbleDialog.text.toString()
-            }
-        }
-
-        if (view.chkRainbowJellyDialog.isChecked){
-            if (topping != " "){
-                topping = topping + " + " + view.chkRainbowJellyDialog.text.toString()
-            }else{
-                topping = view.chkRainbowJellyDialog.text.toString()
-            }
-        }
-
-        if (view.chkCoffeeJellyDialog.isChecked){
-            if (topping != " "){
-                topping = topping + " + " + view.chkCoffeeJellyDialog.text.toString()
-            }else{
-                topping = view.chkCoffeeJellyDialog.text.toString()
-            }
-
-        }
-
-        if (view.chkCreamCheeseDialog.isChecked){
-            if (topping != " "){
-                topping = topping + " + " + view.chkCreamCheeseDialog.text.toString()
-            }else{
-                topping = view.chkCreamCheeseDialog.text.toString()
-            }
-        }
-
-        if (view.chkPoppingBobaDialog.isChecked){
-            if (topping != " "){
-                topping = topping + " + " + view.chkPoppingBobaDialog.text.toString()
-            }else{
-                topping = view.chkPoppingBobaDialog.text.toString()
-            }
-        }
-
-        if (view.chkRegalDialog.isChecked){
-            if (topping != " "){
-                topping = topping + " + " + view.chkRegalDialog.text.toString()
-            }else{
-                topping = view.chkRegalDialog.text.toString()
-            }
-        }
-
-        return topping
-    }
-
 }
 

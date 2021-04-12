@@ -35,13 +35,13 @@ import com.mutia.dsruput.model.getData.DataItem
 import kotlin.math.log
 
 
-class OutletFragment : Fragment(), Listener, LocationData.AddressCallBack {
+class OutletFragment : Fragment(){ //, Listener, LocationData.AddressCallBack
 
-    lateinit var navController: NavController
-
-    var easyWayLocation: EasyWayLocation? = null
-    private var location: TextView? = null
-    var getLocationDetail: GetLocationDetail? = null
+//    lateinit var navController: NavController
+//
+//    var easyWayLocation: EasyWayLocation? = null
+//    private var location: TextView? = null
+//    var getLocationDetail: GetLocationDetail? = null
 
     lateinit var prefManager: PrefManager
 
@@ -63,42 +63,38 @@ class OutletFragment : Fragment(), Listener, LocationData.AddressCallBack {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prefManager = PrefManager(requireContext())
-        location = requireView().findViewById(R.id.tvAddress)
-        // location = tvAddress
-        getLocationDetail = GetLocationDetail(this, context)
-        easyWayLocation = EasyWayLocation(context, false, this)
 
-//        navController = Navigation.findNavController(view)
+        val alamat_user = prefManager.getValueString("AlamatUser").toString()
+        textAlamatOutlet.text = alamat_user
 
-        if (permissionIsGranted()) {
-            doLocationWork()
-        } else {
-            // Permission not granted, ask for it
-            //testLocationRequest.requestPermission(121);
+        expandMore.setOnClickListener {
+            relative2Outlet.visibility = View.VISIBLE
+            closeOutlet.visibility = View.VISIBLE
+            expandMore.visibility = View.GONE
         }
 
-       // Toast.makeText(context, "lat :"+prefManager.getValueFloat("latitude")+" long : "+prefManager.getValueFloat("longtitude"), Toast.LENGTH_LONG).show()
+        closeOutlet.setOnClickListener {
+            relative2Outlet.visibility = View.GONE
+            closeOutlet.visibility = View.GONE
+            expandMore.visibility = View.VISIBLE
+        }
+//        location = requireView().findViewById(R.id.tvAddress)
+//        // location = tvAddress
+//        getLocationDetail = GetLocationDetail(this, context)
+//        easyWayLocation = EasyWayLocation(context, false, this)
+//
+//        navController = Navigation.findNavController(view)
+//
+//        if (permissionIsGranted()) {
+//            doLocationWork()
+//        } else {
+//            // Permission not granted, ask for it
+//            //testLocationRequest.requestPermission(121);
+//        }
+//
+//        Toast.makeText(context, "lat :"+prefManager.getValueFloat("latitude")+" long : "+prefManager.getValueFloat("longtitude"), Toast.LENGTH_LONG).show()
 
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        super.onCreateOptionsMenu(menu, inflater)
-//        inflater.inflate(R.menu.menu_user, menu)
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        setMode(item.itemId)
-//        return super.onOptionsItemSelected(item)
-//    }
-//
-//    private fun setMode(selectedMode: Int) {
-//        when (selectedMode) {
-//            R.id.logout -> {
-//                prefManager.removeValue("id")
-//                navController.navigate(R.id.action_outletFragment_to_loginFragment)
-//            }
-//        }
-//    }
 
     private fun showData() {
         val listOutlet = Network.service().getData()
@@ -111,7 +107,7 @@ class OutletFragment : Fragment(), Listener, LocationData.AddressCallBack {
                 if (response.isSuccessful) {
                     val item = response.body()?.data
 
-                    prefManager = context?.let { PrefManager(it) }!!
+                 //   prefManager = context?.let { PrefManager(it) }!!
 
                     var ltdUser = prefManager?.getValueFloat("latitude")
                     var ntdUser = prefManager?.getValueFloat("longtitude")
@@ -143,7 +139,6 @@ class OutletFragment : Fragment(), Listener, LocationData.AddressCallBack {
                                 }
                             })
                     recylerOutlet.adapter = adapter
-
                 }
             }
 
@@ -152,66 +147,5 @@ class OutletFragment : Fragment(), Listener, LocationData.AddressCallBack {
                 Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
             }
         })
-    }
-
-    private fun doLocationWork() {
-        easyWayLocation!!.startLocation()
-    }
-
-    private fun permissionIsGranted(): Boolean {
-        val permissionState = context?.let {
-            ActivityCompat.checkSelfPermission(
-                it,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            )
-        }
-        return permissionState == PackageManager.PERMISSION_GRANTED
-    }
-
-    override fun locationOn() {
-        Toast.makeText(context, "Location ON", Toast.LENGTH_SHORT).show();
-    }
-
-    override fun currentLocation(location: Location?) {
-        val data = StringBuilder()
-        data.append(location!!.latitude)
-        data.append(" , ")
-        data.append(location!!.longitude)
-        //latLong!!.text = data --> Input latitude dan longtitude ke text view
-
-        prefManager.save("latitude", location.latitude.toFloat())
-        prefManager.save("longtitude", location.longitude.toFloat())
-
-        getLocationDetail?.getAddress(location!!.latitude, location!!.longitude, "xyz")
-    }
-
-    override fun locationCancelled() {
-        Toast.makeText(context, "Location Cancelled", Toast.LENGTH_SHORT).show();
-    }
-
-    override fun locationData(locationData: LocationData?) {
-        location!!.text = locationData?.full_address
-
-        prefManager.save("AlamatUser", locationData?.full_address!!)
-
-        progressBar.visibility = View.GONE
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == EasyWayLocation.LOCATION_SETTING_REQUEST_CODE) {
-            easyWayLocation!!.onActivityResult(resultCode)
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        easyWayLocation!!.startLocation()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        easyWayLocation!!.endUpdates()
     }
 }

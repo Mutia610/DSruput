@@ -8,7 +8,9 @@ import android.view.View
 import android.widget.Toast
 import com.mutia.dsruput.R
 import com.mutia.dsruput.config.Network
+import com.mutia.dsruput.config.Url
 import com.mutia.dsruput.model.action.ResponseAction
+import com.mutia.dsruput.model.getDataKeranjang.ResponseGetDataKeranjang
 import com.mutia.dsruput.model.getMenu.DataMenu
 import com.mutia.dsruput.preferences.PrefManager
 import com.mutia.dsruput.view.dashboard.KeranjangActivity
@@ -16,7 +18,9 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_menu.*
 import kotlinx.android.synthetic.main.activity_detail_menu.btnAdd
 import kotlinx.android.synthetic.main.activity_detail_menu.btnMin
+import kotlinx.android.synthetic.main.activity_detail_menu.icBagShop
 import kotlinx.android.synthetic.main.activity_detail_menu.txtJml
+import kotlinx.android.synthetic.main.activity_menu.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,8 +33,21 @@ class DetailMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_menu)
 
+        prefManager = PrefManager(this)
+        val getData = intent.getParcelableExtra<DataMenu>("data")
+        val namaOutlet = intent.getStringExtra("outlet")
+        val idOutlet = intent.getStringExtra("id_outlet")
+
+        showJumlahKeranjang()
+
         txtBackDetail.setOnClickListener {
-            onBackPressed()
+//            onBackPressed()
+            startActivity(Intent(this, MenuActivity::class.java).putExtra("ID_OUTLET", idOutlet).putExtra("NAMA_OUTLET", namaOutlet))
+            finish()
+        }
+
+        frameKrj.setOnClickListener {
+            startActivity(Intent(this, KeranjangActivity::class.java))
         }
 
 //        var jmlKrj = prefManager.getValueInt("jmlBagShop")
@@ -42,16 +59,11 @@ class DetailMenu : AppCompatActivity() {
 //            jmlBeliDetail.visibility = View.GONE
 //        }
 
-        val getData = intent.getParcelableExtra<DataMenu>("data")
-        val namaOutlet = intent.getStringExtra("outlet")
-        val idOutlet = intent.getStringExtra("id_outlet")
-        prefManager = PrefManager(this)
-
         if (getData != null){
             txtRasaMenuDetail.setText(getData.rasa)
             txtVarianMenuDetail.setText(getData.varian)
             txtHargaMenuDetail.setText(getData.harga)
-            Picasso.get().load("http://192.168.43.84/dsruput/img/menu/" + getData.gambar).into(imgMenuDetail)
+            Picasso.get().load(Url.urlImageMenu + getData.gambar).into(imgMenuDetail)
             txtNamaOutletDetail.setText(namaOutlet)
             txtTotalHargaDetail.setText(getData.harga)
         }
@@ -62,7 +74,7 @@ class DetailMenu : AppCompatActivity() {
             txtJml.setText("0")
 
             btnOrderNow.setOnClickListener {
-                Toast.makeText(this,"Sorry, Menu Sedang Kosong :(",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Maaf, Menu Sedang Kosong :(",Toast.LENGTH_SHORT).show()
             }
         }else
         {
@@ -96,6 +108,36 @@ class DetailMenu : AppCompatActivity() {
                 Log.d("detail", "idMenu : " + getData?.idMenu.toString() + "idOutlet : " + idOutlet.toString() + "idUser : " + prefManager.getValueInt("id").toString() + "topping : " + toppingTambahan + "jml : " + txtJml.text.toString() + " totaHarga : " + txtTotalHargaDetail.text.toString())
             }
         }
+    }
+
+    private fun showJumlahKeranjang() {
+        val id_user = prefManager.getValueInt("id").toString()
+
+        val show = Network.service().getDataKeranjang(id_user)
+        show.enqueue(object : Callback<ResponseGetDataKeranjang> {
+            override fun onResponse(
+                call: Call<ResponseGetDataKeranjang>,
+                response: Response<ResponseGetDataKeranjang>
+            ) {
+                if (response.isSuccessful) {
+                    val item = response.body()?.data
+
+                    val banyak = item?.size!!.toInt()
+                    if (banyak != 0){
+                        jmlBeliDetail.visibility = View.VISIBLE
+                        jmlBeliDetail.text = banyak.toString()
+                    }else{
+                        jmlBeliDetail.visibility = View.GONE
+                    }
+                } else {
+                    Toast.makeText(this@DetailMenu, "Gagal mendapatkan jumlah item", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseGetDataKeranjang>, t: Throwable) {
+                Toast.makeText(this@DetailMenu, "Gagal Get Data", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun insertKeranjang(id_menu: String, id_outlet: String, id_user: String, tambahan: String, jumlah: String, total_harga: String){

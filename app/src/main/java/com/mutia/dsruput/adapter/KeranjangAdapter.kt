@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.mutia.dsruput.R
 import com.mutia.dsruput.config.Network
+import com.mutia.dsruput.config.Url
 import com.mutia.dsruput.model.getDataKeranjang.DataItemKeranjang
 import com.mutia.dsruput.model.getDataKeranjang.ResponseGetDataKeranjang
 import com.mutia.dsruput.model.getMenu.DataMenu
@@ -48,8 +49,6 @@ class KeranjangAdapter(val data: List<DataItemKeranjang?>?, val itemClick: OnCli
 
         var jml = item?.jumlah.toString().toInt()
 
-//        prefManager = PrefManager(holder.context)
-
         holder.rasa.text = item?.rasa
         holder.varian.text = item?.varian
         holder.jumlah.text = item?.jumlah
@@ -57,7 +56,7 @@ class KeranjangAdapter(val data: List<DataItemKeranjang?>?, val itemClick: OnCli
         holder.harga.text = item?.total_harga
         holder.tambahan.text = item?.tambahan
 
-        Picasso.get().load("http://192.168.43.84/dsruput/img/menu/" + item?.gambar)
+        Picasso.get().load(Url.urlImageMenu + item?.gambar)
             .into(holder.imgMenu)
 
         if (jml > 1){
@@ -65,18 +64,6 @@ class KeranjangAdapter(val data: List<DataItemKeranjang?>?, val itemClick: OnCli
         }else{
             holder.hargaSatuan.visibility = View.GONE
         }
-
-//        holder.btnAdd.setOnClickListener {
-//            jml = jml + 1
-//            holder.jumlah.text = jml.toString()
-//
-//        }
-//
-//        holder.btnMin.setOnClickListener {
-//            jml = jml - 1
-//            holder.jumlah.text = jml.toString()
-//
-//        }
 
         holder.btnDelete.setOnClickListener {
             itemClick.hapus(item)
@@ -108,24 +95,6 @@ class KeranjangAdapter(val data: List<DataItemKeranjang?>?, val itemClick: OnCli
 
             updateKeranjang(item?.idKeranjang.toString(), item?.tambahan.toString(), holder.jumlah.text.toString(), holder.harga.text.toString())
             itemClick.updateHarga()
-
-//            var jmlAdd = holder.jumlah.text.toString().toInt() + 1
-//            var hargaSatuan = holder.hargaSatuan.text.toString().toInt()
-//            var harga = holder.harga.text.toString().toInt()
-//
-//            var totHarga = (hargaSatuan + harga).toString()
-//
-//            holder.jumlah.text = jmlAdd.toString()
-//            holder.harga.text = totHarga
-//
-//            item?.jumlah = jmlAdd.toString()
-//            item?.total_harga = totHarga
-//
-//            if (jmlAdd > 1){
-//                holder.hargaSatuan.visibility = View.VISIBLE
-//            }else{
-//                holder.hargaSatuan.visibility = View.GONE
-//            }
         }
 
         holder.btnMin.setOnClickListener {

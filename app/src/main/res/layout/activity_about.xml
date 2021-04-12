@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite3"
+    tools:context=".view.dashboard.AboutActivity">
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/backgr_daftar_menu">
+
+        <TextView
+            android:id="@+id/txtBackAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_back"
+            android:background="@drawable/backgr_back"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="3dp"
+            android:paddingBottom="5dp"
+            />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dsruput_text_white"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_below="@id/relative"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:src="@drawable/dsruput_blue"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textBerita"
+        android:layout_below="@id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="@string/about_text"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:textAlignment="center"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/colorWhite">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:backgroundTint="@color/colorWhite"
+            >
+
+            <ImageView
+                android:id="@+id/imgDBesto"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/dbesto"/>
+
+            <ImageView
+                android:id="@+id/imgGoFood"
+                android:layout_toRightOf="@id/imgDBesto"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="25dp"
+                android:src="@drawable/gofood"/>
+
+            <ImageView
+                android:id="@+id/imgGrab"
+                android:layout_toRightOf="@id/imgGoFood"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="25dp"
+                android:src="@drawable/grabfood"/>
+
+            <ImageView
+                android:id="@+id/imgLazatto"
+                android:layout_toRightOf="@id/imgGrab"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:src="@drawable/lazatto"/>
+
+            <ImageView
+                android:id="@+id/imgShopeePay"
+                android:layout_toRightOf="@id/imgLazatto"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/shopeepay"/>
+
+        </RelativeLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/textPartner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Our Partners"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="@color/colorBlue"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"/>
+
+</RelativeLayout>

@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        // startActivity(intent)
+//        startActivity(intent)
+//        finish()
     }
-
 }

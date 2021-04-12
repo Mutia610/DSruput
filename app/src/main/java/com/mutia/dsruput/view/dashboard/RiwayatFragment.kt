@@ -12,6 +12,7 @@ import com.mutia.dsruput.config.Network
 import com.mutia.dsruput.model.action.ResponseAction
 import com.mutia.dsruput.model.riwayat.ResponseDataRiwayat
 import com.mutia.dsruput.preferences.PrefManager
+import kotlinx.android.synthetic.main.activity_keranjang.*
 import kotlinx.android.synthetic.main.fragment_riwayat.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,13 +40,14 @@ class RiwayatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        prefManager = PrefManager(requireContext())
 
     }
 
     private fun showDataRiwayat() {
-//        var id_costumer = prefManager.getValueInt("id").toString()
-        val show = Network.service().getOrders("1")
+        prefManager = PrefManager(requireContext())
+        val idCo = prefManager.getValueInt("id")
+
+        val show = Network.service().getOrders(idCo.toString())
         show.enqueue(object : Callback<ResponseDataRiwayat>{
             override fun onResponse(
                 call: Call<ResponseDataRiwayat>,
@@ -60,7 +62,6 @@ class RiwayatFragment : Fragment() {
             override fun onFailure(call: Call<ResponseDataRiwayat>, t: Throwable) {
                 Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
             }
-
         })
     }
 }

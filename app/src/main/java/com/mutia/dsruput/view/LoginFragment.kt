@@ -3,7 +3,6 @@ package com.mutia.dsruput.view
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.mutia.dsruput.R
 import com.mutia.dsruput.config.Network
+import com.mutia.dsruput.preferences.SessionManager
 import com.mutia.dsruput.model.login.ResponseLogin
 import com.mutia.dsruput.preferences.PrefManager
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -24,6 +24,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     lateinit var navController: NavController
     lateinit var prefManager: PrefManager
+    lateinit var session: SessionManager
  //   val login: List<DataItemKeranjang?>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,14 +48,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
         chkShowPass2.setOnClickListener(this)
 
         prefManager = PrefManager(requireContext())
+        session = SessionManager(requireContext())
 
-
-        // langsung login
-//        Log.d("tes","tes 1 :"+prefManager.getValueInt("id"))
-        if (prefManager.getValueInt("id") !=0){
-            navController.navigate(R.id.action_loginFragment_to_navActivity)
-//            Log.d("tes","tes  :"+prefManager.getValueInt("id"))
-        }
     }
 
     override fun onClick(view: View?) {
@@ -80,42 +75,38 @@ class LoginFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun login (email: String, password: String) {
+    private fun login(email: String, password: String) {
         if (email.isNotEmpty() && password.isNotEmpty()) {
-                val loginUser = Network.service().login( email ?: "", password ?: "")
-                loginUser.enqueue(object : Callback<ResponseLogin> {
+            val loginUser = Network.service().login(email, password)
+            loginUser.enqueue(object : Callback<ResponseLogin> {
 
-                    override fun onResponse(
-                        call: Call<ResponseLogin>,
-                        response: Response<ResponseLogin>
-                    ) {
-                        if (response.isSuccessful){
-                            val status = response.body()?.isSuccess
-                            val message = response.body()?.message
-                            val dataUser = response.body()?.data
+                override fun onResponse(
+                    call: Call<ResponseLogin>,
+                    response: Response<ResponseLogin>
+                ) {
+                    val status = response.body()?.isSuccess
+                    val dataUser = response.body()?.data
 
-                            val idUser = dataUser?.get(0)?.id.toString().toInt()
-                            val namaUser = dataUser?.get(0)?.username.toString()
+                    if (status == true) {
 
-                            if (status ?: true){
-                                Toast.makeText(context, message , Toast.LENGTH_SHORT).show()
+                        val idUser = dataUser?.get(0)?.id.toString().toInt()
+                        val namaUser = dataUser?.get(0)?.username.toString()
 
-                                //prefManager.save("id",1)
+                        session.login = true
+                        prefManager.save("id", idUser)
+                        prefManager.save("namaUser", namaUser)
 
-                                prefManager.save("id",idUser)
-                                prefManager.save("namaUser", namaUser)
+                        navController.navigate(R.id.action_loginFragment_to_navActivity)
 
-                                navController.navigate(R.id.action_loginFragment_to_navActivity)
-                            }else
-                            {
-                                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-                            }
-                        }
+                    } else {
+                        Toast.makeText(context, response.body()?.message.toString(), Toast.LENGTH_SHORT).show()
                     }
-                    override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
-                        Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
-                    }
-                })
+                }
+
+                override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
+                    Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
+                }
+            })
         } else {
             if (email.isEmpty()) {
                 emailLogin.error = "Email harus di isi"

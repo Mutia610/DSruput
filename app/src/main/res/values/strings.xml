@@ -2,4 +2,6 @@
     <string name="app_name">DSruput</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_text"><![CDATA[d’Sruput merupakan UMKM yang bergerak dibidang Food & Beverage yang terkenal dengan ciri khas rasa yang sangat cocok dengan lidah orang indonesia dengan varian rasa yang menggugah selera dan harga yang sangat terjangkau. d’Sruput berdiri pada Agustus 2019 dan sudah ekspansi ke berbagai kota di indonesia dan sudah mempunyai 55 cabang.]]></string>
+    <string name="textIg">\@drinkandsruput</string>
 </resources>

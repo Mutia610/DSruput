@@ -27,7 +27,6 @@ class ViewPagerPromoAdapter(fragmentManager: FragmentManager, lifecycle: Lifecyc
             else->{
                 Fragment()
             }
-
         }
     }
 }

@@ -11,11 +11,15 @@ import androidx.fragment.app.Fragment
 import com.denzcoskun.imageslider.models.SlideModel
 import com.mutia.dsruput.R
 import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.mutia.dsruput.adapter.KeranjangAdapter
 import com.mutia.dsruput.adapter.MenuFavoriteAdapter
 import com.mutia.dsruput.config.Network
+import com.mutia.dsruput.model.getDataKeranjang.DataItemKeranjang
+import com.mutia.dsruput.model.getDataKeranjang.ResponseGetDataKeranjang
 import com.mutia.dsruput.model.getMenu.DataMenu
 import com.mutia.dsruput.model.getMenu.ResponseGetMenu
 import com.mutia.dsruput.preferences.PrefManager
+import kotlinx.android.synthetic.main.activity_keranjang.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,6 +33,8 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         showData()
+        showDataKeranjang()
+
     }
 
     override fun onCreateView(
@@ -53,14 +59,16 @@ class HomeFragment : Fragment() {
         val imageSlider = image_slider
         imageSlider.setImageList(imageList, ScaleTypes.FIT)
 
-        prefManager = PrefManager(requireContext())
-
-        var jmlBagShop = prefManager.getValueInt("jmlBagShop")
-
-        jmlBeliKeranjang.text = jmlBagShop.toString()
-
         icKeranjang.setOnClickListener {
             startActivity(Intent(context, KeranjangActivity::class.java))
+        }
+
+        icPesan.setOnClickListener {
+            startActivity(Intent(context, MessageActivity::class.java))
+        }
+
+        txtLebihBanyak.setOnClickListener {
+            startActivity(Intent(context, BeritaActivity::class.java))
         }
     }
 
@@ -89,6 +97,37 @@ class HomeFragment : Fragment() {
                 Log.d("eror", "eror : " + t + " cal :" + call);
                 Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
             }
+        })
+    }
+
+    private fun showDataKeranjang() {
+        prefManager = PrefManager(requireContext())
+        val id_user = prefManager.getValueInt("id").toString()
+
+        val show = Network.service().getDataKeranjang(id_user)
+        show.enqueue(object : Callback<ResponseGetDataKeranjang> {
+            override fun onResponse(
+                call: Call<ResponseGetDataKeranjang>,
+                response: Response<ResponseGetDataKeranjang>
+            ) {
+                if (response.isSuccessful) {
+                    val item = response.body()?.data
+
+                    val banyak = item?.size!!.toInt()
+                    if (banyak != 0){
+                        jmlBeliKeranjang.text = banyak.toString()
+                    }else{
+                        jmlBeliKeranjang.visibility = View.GONE
+                    }
+                } else {
+                    Toast.makeText(context, "Gagal mendapatkan jumlah item", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseGetDataKeranjang>, t: Throwable) {
+                Toast.makeText(context, "Gagal Get Data", Toast.LENGTH_SHORT).show()
+            }
+
         })
     }
 }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.SphericalUtil
 import com.mutia.dsruput.R
+import com.mutia.dsruput.config.Url
 import com.mutia.dsruput.model.getData.DataItem
 import com.mutia.dsruput.preferences.PrefManager
 import com.squareup.picasso.Picasso
@@ -41,54 +42,13 @@ class OutletAdapater(
         holder.nama_outlet.text = item?.namaOutlet
         holder.alamat.text = item?.alamat
 
-//        Picasso.get().load("http://192.168.43.84/dsruput/img/" + item?.gambarOutlet).resize(
-//            90,
-//            90
-//        ).centerCrop()
-//            .into(holder.gambar_outlet)
-
-        Picasso.get().load("http://192.168.43.84/dsruput/img/" + item?.gambarOutlet).into(holder.gambar_outlet)
+        Picasso.get().load(Url.urlImageOutlet + item?.gambarOutlet).into(holder.gambar_outlet)
 
         holder.view.setOnClickListener{
             itemClick.menu(item?.kodeOutlet, item?.namaOutlet)
         }
 
         holder.jarak.text = item?.jarak.toString()
-
-//        prefManager = PrefManager(holder.context)
-//        val ltdOutlet = item?.latitude
-//        val ntdOutlet = item?.longtitude
-//
-//        var ltdUser = prefManager?.getValueFloat("latitude")
-//        var ntdUser = prefManager?.getValueFloat("longtitude")
-//
-//        var latLngOutlet : LatLng = LatLng(ltdOutlet.toString().toDouble(), ntdOutlet.toString().toDouble())
-//        var latLngUser: LatLng = LatLng(ltdUser.toString().toDouble(), ntdUser.toString().toDouble())
-//        var distance: Double? = null
-//
-//        distance = SphericalUtil.computeDistanceBetween(latLngOutlet, latLngUser)
-//
-//        if (distance >= 1000){
-//            var distanceKm = String.format("%.2f", distance!! / 1000) + " Km"
-//            holder.jarak.text = distanceKm
-//        }else{
-//            var distanceM = String.format("%.2f", distance!!) + " M"
-//            holder.jarak.text = distanceM
-//        }
-
-
-//        var jarak = (distance!! / 1000).toString().toFloat()
-//        Log.d("jarak adr"," : "+jarak)
-//
-//        var jml = (data?.size)?.minus(1)
-//
-//        var arrayJarak : Array<String>
-//        for (i in 0..jml!! ){
-//            arrayJarak = arrayOf(arrayOf(jarak).toString())
-//
-//        }
-
-       // prefManager.save("jarakOutlet", jarak)
 
     }
 

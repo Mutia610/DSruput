@@ -22,8 +22,4 @@ class SubscriptionFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_subscription, container, false)
     }
-
-
-
-
 }

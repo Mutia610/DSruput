@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object Network {
     fun getRetrofit() : Retrofit {
-        return Retrofit.Builder().baseUrl("http://192.168.43.84/dsruput/")//192.168.43.84 //192.168.100.143
+        return Retrofit.Builder().baseUrl(Url.baseUrl) //192.168.43.84 //192.168.100.143
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mutia.dsruput.R
+import com.mutia.dsruput.config.Url
 import com.mutia.dsruput.model.DataItemDetailRiwayat
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_checkout.view.*
@@ -33,7 +34,7 @@ class DetailRiwayatAdapter(val data: List<DataItemDetailRiwayat?>?): RecyclerVie
         holder.jumlah.text = item?.jumlah + "X"
         holder.harga.text = item?.harga
         holder.tambahan.text = item?.toppingTambahan
-        Picasso.get().load("http://192.168.43.84/dsruput/img/menu/" + item?.gambar)
+        Picasso.get().load(Url.urlImageMenu + item?.gambar)
             .into(holder.imgMenu)
     }
 

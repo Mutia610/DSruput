@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPlatinum2"
+    tools:context=".view.dashboard.UserProfileActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="@drawable/backgr_user_profile1">
+
+        <TextView
+            android:id="@+id/txtBackProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/backgr_back"
+            android:drawableEnd="@drawable/ic_back"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="3dp"
+            android:paddingBottom="5dp" />
+
+        <FrameLayout
+            android:id="@+id/framePP"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:src="@drawable/img_avatar"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/btnEditImgProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_add_photo"
+            android:visibility="invisible"
+            />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/namaUserProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/framePP"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/lato_black"
+            android:text="Mutia Hulwah"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:id="@+id/btnEditProfile"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_edit"
+            android:layout_below="@id/framePP"
+            android:layout_toRightOf="@id/namaUserProfile"
+            android:layout_marginLeft="5dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeShow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgr_profile_user2"
+        android:layout_marginTop="215dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
+        android:padding="10dp"
+        android:visibility="visible">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/LinearShow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="USER PROFILE"
+                    android:textColor="@color/colorBlue3"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Username"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textUsernameProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/backgr_login"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/roboto"
+                    android:text="Mutia Hulwah"
+                    android:drawableStart="@drawable/ic_account"
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Email"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textEmailProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/backgr_login"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/roboto"
+                    android:text="mutiahulwah@gmail.com"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="No Telephone"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textNoHpProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/backgr_login"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/roboto"
+                    android:text="085375894711"
+                    android:drawableStart="@drawable/ic_baseline_phone_android_24"
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Alamat"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textAlamatProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/backgr_login"
+                    android:maxLines="4"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/roboto"
+                    android:text="Jalan Bandes Limau Manis Rt.01/ Rw.04 Kecamatan Pauh, Kota Padang, Sumatera Barat"
+                    android:drawableStart="@drawable/ic_location"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Jenis Kelamin"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="16sp" />
+
+                <RadioGroup
+                    android:id="@+id/radioGrup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbPerempuan1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Perempuan"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/rbLaki1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="Laki - Laki"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+        </ScrollView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeEdit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgr_profile_user2"
+        android:layout_marginTop="215dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/linearEdit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="EDIT USER PROFILE"
+                    android:textColor="@color/colorBlue3"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Username"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etUsernameProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/backgr_login"
+                    android:fontFamily="@font/roboto"
+                    android:hint="Your Name"
+                    android:drawableStart="@drawable/ic_account"
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:inputType="text"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Email"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etEmailProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/backgr_login"
+                    android:fontFamily="@font/roboto"
+                    android:hint="Your Email"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:inputType="textEmailAddress"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="No Telephone"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etNoHpProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/backgr_login"
+                    android:fontFamily="@font/roboto"
+                    android:hint="Your Phone Number"
+                    android:drawableStart="@drawable/ic_baseline_phone_android_24"
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:inputType="number"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Alamat"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/etAlamatProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/backgr_login"
+                    android:maxLines="4"
+                    android:fontFamily="@font/roboto"
+                    android:hint="Your Address"
+                    android:drawableStart="@drawable/ic_location"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Jenis Kelamin"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="16sp" />
+
+                <RadioGroup
+                    android:id="@+id/radioGrup2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbPerempuan2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Perempuan"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/rbLaki2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="Laki - Laki"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14sp" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Password"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etPasswordProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/backgr_login"
+                    android:fontFamily="@font/roboto"
+                    android:hint="your new password"
+                    android:drawableStart="@drawable/ic_baseline_lock_24"
+                    android:drawablePadding="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:inputType="textPassword"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans"
+                    android:layout_marginLeft="10dp"
+                    android:text="* isi jika ingin merubah password"
+                    android:textColor="@color/colorGray2"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnUpdateProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:padding="5dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Save"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/backgr_button_login"
+                    />
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</RelativeLayout>
